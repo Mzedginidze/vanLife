@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #fff7ed;
+}
+.info p {
+  font-size: 20px;
+}
+.info h3 {
+  color: #161616;
+  font-weight: 700;
+}
+.travel {
+  width: 65%;
+  h2 {
+    font-weight: 900;
+    font-size: 35px;
+  }
+  p {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .travel {
+    width: 100%;
+    h2 {
+      font-size: 22px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+}
+.welcome {
+  h2 {
+    font-weight: 700;
+  }
+}
+@media (max-width: 600px) {
+  .description {
+    display: none;
+  }
+}
