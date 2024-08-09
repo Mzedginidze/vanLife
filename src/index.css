@@ -43,3 +43,8 @@ body {
     display: none;
   }
 }
+@media (max-width: 600px) {
+  .van {
+    width: 45% !important;
+  }
+}
