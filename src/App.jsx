@@ -9,6 +9,7 @@ import Income from "./pages/Host/Income";
 import Reviews from "./pages/Host/Reviews";
 import VansList from "./pages/Host/VansList";
 import Vans from "./pages/Vans";
+import VansDetail from "./pages/VansDetail";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="vans" element={<Vans />} />
-
+            <Route path="vans/:id" element={<VansDetail />} />
             <Route path="host" element={<HostLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income />} />

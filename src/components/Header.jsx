@@ -1,7 +1,14 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
+
+  const newStyle = {
+    textDecoration: "underline",
+    color: "black",
+    fontWeight: "700",
+  };
+
   return (
     <div>
       <header className="container d-flex justify-content-between flex-wrap align-items-center py-3">
@@ -15,55 +22,31 @@ const Header = () => {
         <nav className="navbar">
           <ul className="navbar-nav flex-row gap-3">
             <li className="nav-item">
-              <Link
+              <NavLink
                 className="nav-link"
-                style={
-                  location.pathname === "/host"
-                    ? {
-                        textDecoration: "underline",
-                        color: "black",
-                        fontWeight: "700",
-                      }
-                    : { textDecoration: "none" }
-                }
+                style={({ isActive }) => (isActive ? newStyle : null)}
                 to="/host"
               >
                 Host
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
+              <NavLink
                 className="nav-link"
-                style={
-                  location.pathname === "/about"
-                    ? {
-                        textDecoration: "underline",
-                        color: "black",
-                        fontWeight: "700",
-                      }
-                    : { textDecoration: "none" }
-                }
+                style={({ isActive }) => (isActive ? newStyle : null)}
                 to="/about"
               >
                 About
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
+              <NavLink
                 className="nav-link"
-                style={
-                  location.pathname === "/vans"
-                    ? {
-                        textDecoration: "underline",
-                        color: "black",
-                        fontWeight: "700",
-                      }
-                    : { textDecoration: "none" }
-                }
+                style={({ isActive }) => (isActive ? newStyle : null)}
                 to="/vans"
               >
                 Vans
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>

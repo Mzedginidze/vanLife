@@ -1,5 +1,5 @@
 import vansData from "../data/vansData";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 
 const Vans = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -56,11 +56,13 @@ const Vans = () => {
       <div className="d-flex flex-wrap gap-4 my-5">
         {display.map((item, index) => (
           <div style={{ width: "14rem" }} key={index} className="van">
-            <img
-              src={item.imageUrl}
-              className="img-fluid rounded"
-              alt={item.description}
-            />
+            <Link to={`${item.id}`}>
+              <img
+                src={item.imageUrl}
+                className="img-fluid rounded"
+                alt={item.description}
+              />
+            </Link>
             <div className="pt-3">
               <div className="d-flex justify-content-between fw-bold">
                 <span>{item.name}</span>
