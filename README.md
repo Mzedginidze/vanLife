@@ -6,7 +6,7 @@ Copy of one of the figma template.
 # React + Vite
 
 # Link
-[project website](https://vanlifec.netlify.app/vans)
+[project website](https://vanlifec.netlify.app)
 
 # Link
 [figma template](https://www.figma.com/design/bYbgfDJF4MzAiErHctg2B4/van?node-id=1-3&node-type=FRAME&t=Xc8fHV3DlaoivA2t-0)
