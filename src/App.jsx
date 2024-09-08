@@ -10,29 +10,36 @@ import Reviews from "./pages/Host/Reviews";
 import VansList from "./pages/Host/VansList";
 import Vans from "./pages/Vans";
 import VansDetail from "./pages/VansDetail";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import NotFound from "./pages/NotFound";
+import LogIn from "./pages/LogIn";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import { requireAuth } from "./services/loader";
+//loader={requireAuth}
 const App = () => {
-  return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="vans" element={<Vans />} />
-            <Route path="vans/:id" element={<VansDetail />} />
-            <Route path="host" element={<HostLayout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="income" element={<Income />} />
-              <Route path="vans" element={<VansList />} />
-              <Route path="review" element={<Reviews />} />
-            </Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+  const route = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="vans" element={<Vans />} />
+        <Route path="vans/:id" element={<VansDetail />} />
+        <Route path="logIn" element={<LogIn />} />
+        <Route path="host" element={<HostLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="income" element={<Income />} />
+          <Route path="vans" element={<VansList />} />
+          <Route path="review" element={<Reviews />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    )
   );
+  return <RouterProvider router={route} />;
 };
 
 export default App;

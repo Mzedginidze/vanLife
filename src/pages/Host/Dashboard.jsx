@@ -3,7 +3,8 @@ import star from "../../assets/Star 3.png";
 import vansData from "../../data/vansData";
 
 const Dashboard = () => {
-  const top3 = vansData.slice(0, 3);
+  const index = vansData.length < 3 ? vansData.length : 3;
+  const top3 = vansData.slice(0, index);
 
   return (
     <div>
@@ -47,7 +48,9 @@ const Dashboard = () => {
       <section className="container">
         <div className="d-flex justify-content-between align-items-center py-5">
           <h3>Your listed vans</h3>
-          <button className="btn p-0">view all</button>
+          <Link to="vans" style={{ textDecoration: "none", color: "black" }}>
+            view all
+          </Link>
         </div>
         <div>
           {top3.map((van) => {

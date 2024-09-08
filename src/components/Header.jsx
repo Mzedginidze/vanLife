@@ -1,4 +1,5 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
+import Icon from "../assets/Icon.png";
 
 const Header = () => {
   const location = useLocation();
@@ -47,6 +48,11 @@ const Header = () => {
               >
                 Vans
               </NavLink>
+            </li>
+            <li className="nav-item d-flex align-items-center">
+              <Link to="/logIn">
+                <img src={Icon} />
+              </Link>
             </li>
           </ul>
         </nav>

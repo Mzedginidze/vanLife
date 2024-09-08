@@ -48,3 +48,15 @@ body {
     width: 45% !important;
   }
 }
+
+@media (max-width: 600px) {
+  .chart {
+    width: 100% !important;
+  }
+}
+.info {
+  border-bottom: 1px solid #c7c7c7;
+  p {
+    color: #161616;
+  }
+}
