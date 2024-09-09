@@ -1,6 +1,11 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const HostLayout = () => {
+  const newStyle = {
+    textDecoration: "underline",
+    color: "black",
+    fontWeight: "700",
+  };
   const location = useLocation();
   return (
     <div>
@@ -8,7 +13,7 @@ const HostLayout = () => {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link
+              <NavLink
                 className="nav-link"
                 style={
                   location.pathname === "/host"
@@ -17,63 +22,39 @@ const HostLayout = () => {
                         color: "black",
                         fontWeight: "700",
                       }
-                    : { textDecoration: "none" }
+                    : { textDecoration: "none", color: "rgba(0,0,0,0.65)" }
                 }
                 to="/host"
               >
                 Dashboard
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
+              <NavLink
                 className="nav-link"
-                style={
-                  location.pathname === "/host/income"
-                    ? {
-                        textDecoration: "underline",
-                        color: "black",
-                        fontWeight: "700",
-                      }
-                    : { textDecoration: "none" }
-                }
+                style={({ isActive }) => (isActive ? newStyle : null)}
                 to="income"
               >
                 Income
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
+              <NavLink
                 className="nav-link"
-                style={
-                  location.pathname === "/host/vans"
-                    ? {
-                        textDecoration: "underline",
-                        color: "black",
-                        fontWeight: "700",
-                      }
-                    : { textDecoration: "none" }
-                }
+                style={({ isActive }) => (isActive ? newStyle : null)}
                 to="vans"
               >
                 Vans
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
+              <NavLink
                 className="nav-link"
-                style={
-                  location.pathname === "/host/review"
-                    ? {
-                        textDecoration: "underline",
-                        color: "black",
-                        fontWeight: "700",
-                      }
-                    : { textDecoration: "none" }
-                }
+                style={({ isActive }) => (isActive ? newStyle : null)}
                 to="review"
               >
                 Review
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
