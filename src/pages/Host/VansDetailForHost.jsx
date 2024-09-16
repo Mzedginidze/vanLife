@@ -37,7 +37,7 @@ const VansDetailForHost = () => {
         />
       </svg>
       <Link
-        to="/host/vans"
+        to="/protected/host/vans"
         className="text-decoration-underline ms-3"
         style={{ color: "#201F1D" }}
       >
@@ -78,7 +78,7 @@ const VansDetailForHost = () => {
             <li className="nav-item">
               <NavLink
                 style={
-                  location.pathname === `/host/vans/${id}`
+                  location.pathname === `/protected/host/vans/${id}`
                     ? {
                         textDecoration: "underline",
                         color: "black",

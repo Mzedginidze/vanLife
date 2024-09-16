@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LogedIn from "../data/LogedIn";
+import { IsLogedIn } from "../data/LogedIn";
 
 const LogIn = () => {
   const [form, setForm] = useState({
@@ -9,7 +9,7 @@ const LogIn = () => {
     password: "",
   });
 
-  const { logedIn, setLogedIn } = LogedIn();
+  const { isLogedIn, setIsLogedIn } = useContext(IsLogedIn);
 
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const LogIn = () => {
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
-  const checkIfAccountExcists = async (e) => {
+  const checkIfAccountExists = async (e) => {
     e.preventDefault();
 
     await fetch("https://davits-api.vercel.app/api/users", {
@@ -30,33 +30,36 @@ const LogIn = () => {
       },
     })
       .then((response) => response.json())
-      .then((data) => setUsers(data.result))
-      .catch((error) => console.error("Error:", error));
+      .then((data) => {
+        setUsers(data.result);
 
-    let succeded = users.some(
-      (user) => user.email === form.email && user.password === form.password
-    );
-    if (succeded) {
-      setLogedIn(true);
-      navigate("/host");
-      console.log(logedIn);
-    } else {
-      alert("wrong email address or password!!!" + "\nTry again");
-      setForm({
-        email: "",
-        password: "",
-      });
-    }
+        // Move the login check here, after users are fetched and state is updated
+        let succeeded = data.result.some(
+          (user) => user.email === form.email && user.password === form.password
+        );
+
+        if (succeeded) {
+          setIsLogedIn(true); // Assuming you're using setLogedIn from the context
+          navigate("/protected/host");
+        } else {
+          alert("wrong email address or password!!!" + "\nTry again");
+          setForm({
+            email: "",
+            password: "",
+          });
+        }
+      })
+      .catch((error) => console.error("Error:", error));
   };
 
   return (
     <div className="container col-12 col-lg-6">
-      {!logedIn ? (
+      {!isLogedIn ? (
         <>
           <h1 className="text-center mb-5" style={{ fontWeight: "700" }}>
             Sign in to your account
           </h1>
-          <form className="mb-4" onSubmit={(e) => checkIfAccountExcists(e)}>
+          <form className="mb-4" onSubmit={(e) => checkIfAccountExists(e)}>
             <div>
               <input
                 type="email"
@@ -101,7 +104,7 @@ const LogIn = () => {
           <button
             className="btn col-12"
             style={{ background: "#FF8C38", color: "white" }}
-            onClick={() => setLogedIn(false)}
+            onClick={() => setIsLogedIn(false)}
           >
             Log out
           </button>

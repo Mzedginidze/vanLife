@@ -18,12 +18,13 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { requireAuth } from "./services/loader";
+import Protected from "./components/Protected";
 //loader={requireAuth}
 import VansDetailForHost from "./pages/Host/VansDetailForHost";
 import Details from "./pages/Host/Details";
 import Pricing from "./pages/Host/Pricing";
 import Photos from "./pages/Host/Photos";
+import { IsLogedInProvider } from "./data/LogedIn";
 const App = () => {
   const route = createBrowserRouter(
     createRoutesFromElements(
@@ -33,22 +34,30 @@ const App = () => {
         <Route path="vans" element={<Vans />} />
         <Route path="vans/:id" element={<VansDetail />} />
         <Route path="logIn" element={<LogIn />} />
-        <Route path="host" element={<HostLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="income" element={<Income />} />
-          <Route path="vans" element={<VansList />} />
-          <Route path="vans/:id" element={<VansDetailForHost />}>
-            <Route index element={<Details />} />
-            <Route path="pricing" element={<Pricing />} />
-            <Route path="photos" element={<Photos />} />
+        <Route path="protected" element={<Protected />}>
+          <Route path="host" element={<HostLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="income" element={<Income />} />
+            <Route path="vans" element={<VansList />} />
+            <Route path="vans/:id" element={<VansDetailForHost />}>
+              <Route index element={<Details />} />
+              <Route path="pricing" element={<Pricing />} />
+              <Route path="photos" element={<Photos />} />
+            </Route>
+            <Route path="review" element={<Reviews />} />
           </Route>
-          <Route path="review" element={<Reviews />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
     )
   );
-  return <RouterProvider router={route} />;
+  return (
+    <div>
+      <IsLogedInProvider>
+        <RouterProvider router={route} />
+      </IsLogedInProvider>
+    </div>
+  );
 };
 
 export default App;

@@ -16,7 +16,7 @@ const HostLayout = () => {
               <NavLink
                 className="nav-link"
                 style={
-                  location.pathname === "/host"
+                  location.pathname === "/protected/host"
                     ? {
                         textDecoration: "underline",
                         color: "black",
@@ -24,7 +24,7 @@ const HostLayout = () => {
                       }
                     : { textDecoration: "none", color: "rgba(0,0,0,0.65)" }
                 }
-                to="/host"
+                to="/protected/host"
               >
                 Dashboard
               </NavLink>

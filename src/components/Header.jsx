@@ -26,7 +26,7 @@ const Header = () => {
               <NavLink
                 className="nav-link"
                 style={({ isActive }) => (isActive ? newStyle : null)}
-                to="/host"
+                to="/protected/host"
               >
                 Host
               </NavLink>

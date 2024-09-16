@@ -1,7 +1,8 @@
 
-3. page host must be protected (only showen when user is loged in)
+
 
 
 6. on dashboard edit button's functionality
 
 8. on vans page filter must be updated only one type of van can be selected
+9. create one rigth now (functionality)- sign in

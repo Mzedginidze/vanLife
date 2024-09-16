@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 
-const LogedIn = () => {
-  const [logedIn, setLogedIn] = useState(false);
+const IsLogedIn = createContext();
 
-  return { logedIn, setLogedIn };
+const IsLogedInProvider = ({ children }) => {
+  const [isLogedIn, setIsLogedIn] = useState(false);
+
+  return (
+    <IsLogedIn.Provider value={{ isLogedIn, setIsLogedIn }}>
+      {children}
+    </IsLogedIn.Provider>
+  );
 };
 
-export default LogedIn;
+export { IsLogedIn, IsLogedInProvider };
