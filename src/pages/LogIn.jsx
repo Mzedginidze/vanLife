@@ -93,7 +93,10 @@ const LogIn = () => {
           </form>
           <h6 className="text-center" style={{ fontWeight: "500" }}>
             Don't have an account?{" "}
-            <Link style={{ color: "#FF8C38", textDecoration: "none" }}>
+            <Link
+              to="/signUp"
+              style={{ color: "#FF8C38", textDecoration: "none" }}
+            >
               Create one now
             </Link>
           </h6>

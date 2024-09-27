@@ -64,15 +64,12 @@ const Dashboard = () => {
                       alt={van.description}
                     />
                   </div>
-                  <div className="col-6">
+                  <div className="col-8">
                     <div className="card-body">
-                      <h6 className="card-title">{van.name}</h6>
-                      <p className="card-text">${van.price}/day</p>
+                      <h4 className="card-title">{van.name}</h4>
+                      <h6 className="card-text">${van.price}/day</h6>
                       <p className="card-text description">{van.description}</p>
                     </div>
-                  </div>
-                  <div className="col-2 d-flex justify-content-end">
-                    <button className="btn">Edit</button>
                   </div>
                 </div>
               </div>

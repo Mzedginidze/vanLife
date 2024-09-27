@@ -12,6 +12,7 @@ import Vans from "./pages/Vans";
 import VansDetail from "./pages/VansDetail";
 import NotFound from "./pages/NotFound";
 import LogIn from "./pages/LogIn";
+import SignUp from "./pages/SignUp";
 import {
   Route,
   RouterProvider,
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="vans" element={<Vans />} />
         <Route path="vans/:id" element={<VansDetail />} />
         <Route path="logIn" element={<LogIn />} />
+        <Route path="signUp" element={<SignUp />} />
         <Route path="protected" element={<Protected />}>
           <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
